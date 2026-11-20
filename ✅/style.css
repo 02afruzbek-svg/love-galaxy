@@ -1,0 +1,266 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #05020b;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+#stars {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.screen.active {
+    display: block;
+    animation: appear 1s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.top-label {
+    color: #e9a1ff;
+    font-size: 11px;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+}
+
+.portal {
+    position: relative;
+    width: 230px;
+    height: 230px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 0 30px #e94aff);
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.portal-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid transparent;
+}
+
+.ring-one {
+    width: 220px;
+    height: 220px;
+    border-top-color: #ff4de1;
+    border-bottom-color: #a64dff;
+    animation: spin 5s linear infinite;
+}
+
+.ring-two {
+    width: 185px;
+    height: 185px;
+    border-left-color: #ff91d8;
+    border-right-color: #8e54ff;
+    animation: spin 3s linear infinite reverse;
+}
+
+.ring-three {
+    width: 145px;
+    height: 145px;
+    border-top-color: #ffffff;
+    border-bottom-color: #ff54dc;
+    animation: spin 7s linear infinite;
+}
+
+.portal-core {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #ffb0ef, #bc36ff, #3e0b70);
+    border-radius: 50%;
+    box-shadow: 0 0 30px #e94aff, 0 0 80px #a000ff;
+    display: grid;
+    place-items: center;
+    font-size: 40px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 60px #ff4de1;
+    }
+}
+
+h1 {
+    font-size: 36px;
+    letter-spacing: 4px;
+    margin-top: 40px;
+}
+
+h1 span {
+    color: #e875ff;
+    text-shadow: 0 0 20px #d000ff;
+}
+
+.description {
+    color: #c8b4d9;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+button {
+    margin-top: 35px;
+    padding: 17px 30px;
+    border: 1px solid #ed8bff;
+    border-radius: 40px;
+    background: linear-gradient(90deg, #9e36dc, #f05acb);
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #d000ff66;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px #e94aff;
+}
+
+.bottom-text {
+    margin-top: 55px;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: #9c79b6;
+}
+
+.universe-content {
+    max-width: 500px;
+    margin: auto;
+}
+
+.big-star {
+    font-size: 75px;
+    color: #ff9cf1;
+    text-shadow: 0 0 30px #e94aff;
+    animation: pulse 2s infinite;
+}
+
+.subtitle {
+    color: #e5a1ff;
+    letter-spacing: 4px;
+    font-size: 11px;
+    margin-top: 25px;
+}
+
+.universe-content h1 {
+    font-size: 32px;
+    margin-top: 25px;
+}
+
+.message {
+    color: #d9c6e9;
+    white-space: pre-line;
+    line-height: 2;
+    margin-top: 25px;
+}
+
+#magicMessage {
+    margin-top: 30px;
+    color: #ffb3e9;
+    text-shadow: 0 0 20px #ff40c8;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: 1s;
+    font-size: 20px;
+}
+
+#magicMessage.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.secondary {
+    display: block;
+    margin: 25px auto;
+    background: transparent;
+    border-color: #9560ad;
+    box-shadow: none;
+}
+
+#flash {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#flash.active {
+    animation: flashEffect .9s ease;
+}
+
+@keyframes flashEffect {
+    0% { opacity: 0; }
+    30% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@media(max-width: 450px) {
+    h1 {
+        font-size: 25px;
+    }
+
+    .portal {
+        transform: scale(.85);
+    }
+
+    .message {
+        font-size: 14px;
+    }
+}
